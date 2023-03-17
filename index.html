@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue Test</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container" id="app">
+            <div class="card">
+                <div class="app-titles">
+                    <h1>{{title}}</h1>
+                    <h2>Number of notes - {{notes.length}} </h2>
+                </div>
+                <div class="form-control">
+                    <input
+                        type="text"
+                        v-on:keypress.enter="addNote"
+                        v-bind:placeholder="placeholderString"
+                        v-model="inputValue"
+                    />
+                </div>
+            </div>
+            <button class="btn" v-on:click="addNote">ADD</button>
+            <hr />
+
+            <ul class="list" v-if="!notes.length == 0">
+                <li class="list-item" v-for="(note, index) in notes">
+                    {{note}}
+                    <button class="btn delete" v-on:click="deleteNote(index)">DELETE</button>
+                </li>
+            </ul>
+            <div class="notes-count" v-else>There are no plans. Add a new note</div>
+        </div>
+
+        <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+    </body>
+</html>
